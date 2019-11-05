@@ -1,0 +1,53 @@
+print("Welcome to Tic Tac Toe!\n")
+
+board = ["7", "8", "9",
+         "4", "5", "6",
+         "1", "2", "3"]
+
+def checker(board):
+    if ((board[0] == board[1] == board[2]) or
+        (board[3] == board[4] == board[5]) or
+        (board[6] == board[7] == board[8]) or
+        (board[0] == board[3] == board[6]) or
+        (board[1] == board[4] == board[7]) or
+        (board[2] == board[5] == board[8]) or
+        (board[0] == board[4] == board[8]) or
+        (board[6] == board[4] == board[2])):
+        return True
+    else:
+        return False
+
+print(board[:3])
+print(board[3:6])
+print(board[6:], "\n")
+
+counter = 2
+selection = 10
+
+while checker(board) == False and counter < 11:
+    if counter % 2 == 0:
+        while (selection not in board or selection == ("X" or "O")):
+            selection = input("Player 1, please select field: ")
+        board[board.index(selection)] = "X"
+        print("\n")
+        print(board[:3])
+        print(board[3:6])
+        print(board[6:], "\n")
+        counter += 1
+
+    else:
+        while (selection not in board or selection == ("X" or "O")):
+            selection = input("Player 2, please select field: ")
+        board[board.index(selection)] = "O"
+        print("\n")
+        print(board[:3])
+        print(board[3:6])
+        print(board[6:], "\n")
+        counter += 1
+
+if checker(board) == False and counter == 11:
+    print("Tie! No winner this round!")
+elif counter % 2 == 0:
+    print("Congratulations Player 2. You won!")
+else:
+    print("Congratulations Player 1. You won!")
